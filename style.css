@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f5ff; 
+  margin: 0;
 }
 
 .wrapper {
@@ -10,37 +17,49 @@
   width: 100%;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: burlywood;
-}
-
 .side-bar {
   transform: translateX(-180px);
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 200px;
-  background-color: brown;
-  border-right: solid gray 1px;
+  background-color: #4e6cff; 
+  border-right: 1px solid #333; 
+  overflow: hidden;
+  transition: transform 150ms ease-in-out;
 }
 
 .side-bar:hover {
-  transition: 150ms;
-  transform: translateX(0px);
+  transform: translateX(0);
 }
 
 .products {
   width: 60%;
   margin: auto;
-  background-color: brown;
+  background-color: #e0ecff; 
   border-radius: 25px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
 .product {
-  background-color: white;
-  margin: 20px;
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.product p {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #333;
 }
