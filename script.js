@@ -2,12 +2,10 @@
 const sideBar = document.getElementsByClassName("side-bar")[0];
 const products = document.getElementsByClassName("products")[0];
 sideBar.style.transition = "150ms";
-let data;
 
 async function createProduct(i) {
   const res = await axios.get("https://fakestoreapi.com/products");
-  console.log(res.data.length);
-  for (i = 0; i < res.data.length; i++) {
+  for (let i = 0; i < res.data.length; i++) {
     const productData = res.data[i];
 
     const newDiv = document.createElement("div");
@@ -16,17 +14,15 @@ async function createProduct(i) {
     <img src="${productData.image}" style="width: 150px;">
     <p>Id: ${productData.id}</p>
     <p style="width: 223px; text-overflow: ellipsis; white-space: nowrap;
-    overflow: hidden;>Title: ${productData.title}</p>
+    overflow: hidden;">Title: ${productData.title}</p>
     <p class= "desc" style="width: 223px; text-overflow: ellipsis; white-space: nowrap;
     overflow: hidden;">Description: ${productData.description} </p>
     <p>Price: ${productData.price} </p>
     <p>Category: ${productData.category} </p>
     <p>Rating: ${productData.rating.rate} </p>
     <p>Count: ${productData.rating.count} </p>
-    
   `;
     products.appendChild(newDiv);
-    data = res.data;
   }
 }
 
