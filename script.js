@@ -11,16 +11,26 @@ async function createProduct(i) {
     const newDiv = document.createElement("div");
     newDiv.classList.add("product");
     newDiv.innerHTML = `
-    <img src="${productData.image}" style="width: 150px;">
-    <p>Id: ${productData.id}</p>
-    <p style="width: 223px; text-overflow: ellipsis; white-space: nowrap;
+    <div class="img-frame"> 
+        <img class="img-product" src="${productData.image}"> 
+    </div>
+    <p class= "id">Id: ${productData.id}</p>
+    <p style="width: 187px; text-overflow: ellipsis; white-space: nowrap;
     overflow: hidden;">Title: ${productData.title}</p>
-    <p class= "desc" style="width: 223px; text-overflow: ellipsis; white-space: nowrap;
-    overflow: hidden;">Description: ${productData.description} </p>
-    <p>Price: ${productData.price} </p>
+    <p class= "desc" style="width: 187px; text-overflow: ellipsis; white-space: nowrap;
+    overflow: hidden;">Desc: ${productData.description} </p>
     <p>Category: ${productData.category} </p>
-    <p>Rating: ${productData.rating.rate} </p>
-    <p>Count: ${productData.rating.count} </p>
+    <p>Count: ${productData.rating.count} </p> 
+    <div class="price-rating">
+        <div class="rate"> 
+            <img src="photos/star.png" style="width: 20px; height: 20px;"> </img> 
+            <p>${productData.rating.rate} </p>
+        </div>
+        <div class="price">
+            <img src="photos/vector.png" style="width: 18px; height: 20px;"> </img> 
+            <p>${productData.price}$ </p>
+        </div>
+    </div>
   `;
     products.appendChild(newDiv);
   }

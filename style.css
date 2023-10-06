@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;500&display=swap");
 
 * {
   margin: 0;
@@ -7,8 +7,9 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  background-color: #f0f5ff; 
+  font-family: "Inter", sans-serif;
+
+  background-color: #f0f5ff;
   margin: 0;
 }
 
@@ -24,8 +25,7 @@ body {
   left: 0;
   height: 100%;
   width: 200px;
-  background-color: #4e6cff; 
-  border-right: 1px solid #333; 
+  background-color: #4e6cff;
   overflow: hidden;
   transition: transform 150ms ease-in-out;
 }
@@ -37,7 +37,7 @@ body {
 .products {
   width: 60%;
   margin: auto;
-  background-color: #e0ecff; 
+  background-color: #e0ecff;
   border-radius: 25px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -46,20 +46,63 @@ body {
 }
 
 .product {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-.product img {
-  width: 100%;
+.img-frame {
+  width: 180px;
+  height: 200px;
+  display: flex;
+  justify-content: center; /* Для горизонтального выравнивания */
+  align-items: center; /* Для вертикального выравнивания */
+}
+
+.img-product {
   max-height: 150px;
+  max-width: 150px;
   object-fit: cover;
 }
 
 .product p {
-  margin: 10px 0;
+  color: black;
+  margin: 2px 0;
   font-size: 15px;
-  color: #333;
+  padding: 5px;
+  border-radius: 9px;
+}
+
+.product .id {
+  background-color: white;
+  color: black;
+}
+
+#button {
+  background-color: rgb(146, 64, 194);
+  margin: auto;
+  text-align: center;
+  width: 80px;
+}
+
+.price-rating {
+  display: flex;
+}
+
+.price-rating .rate {
+  display: flex;
+}
+
+.price-rating .price {
+  display: flex;
+  margin-left: auto;
+}
+
+.price-rating .rate img {
+  margin-top: 5px;
+}
+
+.price-rating .price img {
+  margin-top: 5px;
 }
