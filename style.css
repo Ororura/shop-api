@@ -19,7 +19,7 @@ body {
 }
 
 .side-bar {
-  transform: translateX(-180px);
+  transform: translateX(-120px);
   position: fixed;
   top: 0;
   left: 0;
@@ -27,9 +27,43 @@ body {
   width: 200px;
   background-color: #4e6cff;
   overflow: hidden;
-  transition: transform 150ms ease-in-out;
+  transition: transform 150ms;
+  justify-content: flex-end;
 }
 
+.icons-sidebar {
+  display: grid;
+  justify-content: flex-end;
+  transform: translateX(0px);
+  transition: 500ms;
+}
+
+.side-bar:hover .icons-sidebar {
+  transform: translateX(-50px);
+  transition: 500ms;
+}
+
+.side-bar img {
+  align-items: center;
+  margin-right: 5px;
+  transition: 300ms;
+}
+.side-bar:hover #arrow {
+  align-items: center;
+  margin-right: 5px;
+  transform: rotate(0.5turn);
+  transition: 300ms;
+}
+
+#logo {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.side-bar:hover #logo {
+  width: 100px;
+  height: 100px;
+}
 .side-bar:hover {
   transform: translateX(0);
 }
@@ -56,8 +90,8 @@ body {
   width: 180px;
   height: 200px;
   display: flex;
-  justify-content: center; /* Для горизонтального выравнивания */
-  align-items: center; /* Для вертикального выравнивания */
+  justify-content: center;
+  align-items: center;
 }
 
 .img-product {
