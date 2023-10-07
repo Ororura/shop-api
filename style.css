@@ -32,6 +32,7 @@ body {
 }
 
 .icons-sidebar {
+  height: 150px;
   display: grid;
   justify-content: flex-end;
   transform: translateX(0px);
@@ -62,7 +63,7 @@ body {
 
 .side-bar:hover #logo {
   width: 100px;
-  height: 100px;
+  height: 110px;
 }
 .side-bar:hover {
   transform: translateX(0);
