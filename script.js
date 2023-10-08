@@ -5,8 +5,7 @@ const products = document.querySelector(".products");
 const productsCart = document.querySelector(".products-cart");
 sideBar.style.transition = "150ms";
 
-// Функция для создания HTML-кода продукта
-function createProductHTML(productData) {
+function generateProductHTML(productData) {
   return `
       <div class="img-frame"> 
         <img class="img-product" src="${productData.image}"> 
@@ -34,7 +33,7 @@ function createProductHTML(productData) {
       </div>`;
 }
 
-function handleAddToCartClick(el, productData) {
+function addToCartHandler(el, productData) {
   let countler = 1;
   const productsDiv = document.createElement("div");
   productsDiv.classList.add("product-in-cart");
@@ -78,7 +77,7 @@ function handleAddToCartClick(el, productData) {
   });
 }
 
-async function createProduct() {
+async function fetchAndDisplayProducts() {
   try {
     const res = await axios.get("https://fakestoreapi.com/products");
     for (let i = 0; i < res.data.length; i++) {
@@ -86,11 +85,11 @@ async function createProduct() {
 
       const newDiv = document.createElement("div");
       newDiv.classList.add("product");
-      newDiv.innerHTML = createProductHTML(productData);
+      newDiv.innerHTML = generateProductHTML(productData);
 
       const addProdButton = newDiv.querySelector(".add-prod");
       addProdButton.addEventListener("click", () => {
-        handleAddToCartClick(addProdButton, productData);
+        addToCartHandler(addProdButton, productData);
       });
 
       products.appendChild(newDiv);
@@ -100,4 +99,4 @@ async function createProduct() {
   }
 }
 
-createProduct();
+fetchAndDisplayProducts();
