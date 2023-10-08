@@ -51,11 +51,13 @@ async function createProduct(i) {
     products.appendChild(newDiv);
   }
   const addCart = document.querySelectorAll(".add-prod");
+
   addCart.forEach((el) => {
     el.addEventListener("click", () => {
-      const newDiv2 = document.createElement("div");
-      newDiv2.classList.add("product-in-cart");
-      newDiv2.innerHTML = `
+      let countler = 1;
+      const productsDiv = document.createElement("div");
+      productsDiv.classList.add("product-in-cart");
+      productsDiv.innerHTML = `
       <div class="img-frame">
         <img
           class="img-product"
@@ -72,10 +74,42 @@ async function createProduct(i) {
       >
       ${res.data[el.id].title}
       </p>
-      <p>Count: 0</p>
       <p>${res.data[el.id].price}$</p>
+      <div class="product-countler">
+        <img class="plus" id=${
+          el.id
+        } src="photos/plus2.png" width=30px heigth=30px/>
+        <p class="countler" id=${
+          el.id
+        } style="font-size:18px; margin-top:3px"> ${countler}</p>
+        <img class="minus" id=${
+          el.id
+        } src="photos/minus.png" width=30px heigth=30px/>
+      </div>
     </div>`;
-      productsCart.appendChild(newDiv2);
+      productsCart.appendChild(productsDiv);
+      const plus = document.querySelectorAll(".plus");
+      const minus = document.querySelectorAll(".minus");
+
+      const countProd = document.querySelectorAll(".countler");
+      plus[plus.length - 1].addEventListener("click", () => {
+        let count = parseInt(countProd[plus.length - 1].textContent);
+        if (count < 100) {
+          count++;
+          countProd[plus.length - 1].textContent = count;
+        }
+      });
+
+      minus[minus.length - 1].addEventListener("click", () => {
+        let count = parseInt(countProd[minus.length - 1].textContent);
+        if (count > 0) {
+          count--;
+          countProd[minus.length - 1].textContent = count;
+        }
+        if (count === 0) {
+          productsCart.removeChild(productsDiv);
+        }
+      });
     });
   });
 }

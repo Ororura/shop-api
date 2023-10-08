@@ -28,7 +28,6 @@ body {
   background-color: #4e6cff;
   overflow: hidden;
   transition: transform 150ms;
-  justify-content: flex-end;
 }
 
 .icons-sidebar {
@@ -139,7 +138,7 @@ body {
   margin-top: 5px;
 }
 
-.products-cart{
+.products-cart {
   overflow: hidden;
   overflow: scroll;
   height: 70vh;
@@ -156,7 +155,6 @@ body {
 
 .product-in-cart p {
   text-align: center;
-  
 }
 
 .product-in-cart .img-frame {
@@ -165,11 +163,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .product-in-cart .img-frame .img-product {
-    max-height: 150px;
-    max-width: 140px;
-    object-fit: cover;
+  max-height: 150px;
+  max-width: 140px;
+  object-fit: cover;
+}
+
+.product-countler {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-countler .minus {
+}
+
+.plus, .minus {
+  width: 30px;
+  height: 30px;
+
 }
