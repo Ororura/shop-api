@@ -76,6 +76,13 @@ body {
   padding: 20px;
 }
 
+@media (max-width: 1440px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
 .product {
   background-color: #ffffff;
   padding: 20px;
