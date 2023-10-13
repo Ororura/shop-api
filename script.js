@@ -61,7 +61,7 @@ function generateProductElement(productData) {
   const addProductImg = document.createElement("img");
   addProductImg.id = productData.id - 1;
   addProductImg.classList.add("add-prod");
-  addProductImg.src = "photos/vector.png";
+  addProductImg.src = "./photos/vector.png";
   addProductImg.style.cssText = "width: 18px; height: 20px";
 
   const pricePara = document.createElement("p");
@@ -175,7 +175,11 @@ async function fetchAndDisplayProducts() {
 
       const addProdButton = productElement.querySelector(".add-prod");
       addProdButton.addEventListener("click", () => {
-        addToCartHandler(addProdButton, productData);
+        console.log(addProdButton.src.slice(35, -4));
+        if (addProdButton.src.slice(35, -4) === "vector") {
+          addToCartHandler(addProdButton, productData);
+          addProdButton.setAttribute("src", "./photos/filled_vector.png");
+        }
       });
 
       products.appendChild(productElement);
