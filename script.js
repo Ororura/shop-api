@@ -5,52 +5,140 @@ const products = document.querySelector(".products");
 const productsCart = document.querySelector(".products-cart");
 sideBar.style.transition = "150ms";
 
-function generateProductHTML(productData) {
-  return `
-      <div class="img-frame"> 
-        <img class="img-product" src="${productData.image}"> 
-      </div>
-      <p class="id">Id: ${productData.id}</p>
-      <p style="width: 187px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-        Title: ${productData.title}
-      </p> 
-      <p class="desc" style="width: 187px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-        Desc: ${productData.description}
-      </p>
-      <p>Category: ${productData.category}</p>
-      <p>Count: ${productData.rating.count}</p> 
-      <div class="price-rating">
-        <div class="rate"> 
-          <img src="photos/star.png" style="width: 20px; height: 20px;"/>  
-          <p>${productData.rating.rate}</p>
-        </div>
-        <div class="price">
-          <img id="${
-            productData.id - 1
-          }" class="add-prod" src="photos/vector.png" style="width: 18px; height: 20px;"/>  
-          <p>${productData.price}$</p>
-        </div>
-      </div>`;
+function generateProductElement(productData) {
+  const productDiv = document.createElement("div");
+  productDiv.classList.add("product");
+
+  const imgFrameDiv = document.createElement("div");
+  imgFrameDiv.classList.add("img-frame");
+
+  const imgProduct = document.createElement("img");
+  imgProduct.classList.add("img-product");
+  imgProduct.src = productData.image;
+
+  imgFrameDiv.appendChild(imgProduct);
+
+  const idPara = document.createElement("p");
+  idPara.classList.add("id");
+  idPara.textContent = `Id: ${productData.id}`;
+
+  const titlePara = document.createElement("p");
+  titlePara.style.cssText =
+    "width: 187px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;";
+  titlePara.textContent = `Title: ${productData.title}`;
+
+  const descPara = document.createElement("p");
+  descPara.classList.add("desc");
+  descPara.style.cssText =
+    "width: 187px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;";
+  descPara.textContent = `Desc: ${productData.description}`;
+
+  const categoryPara = document.createElement("p");
+  categoryPara.textContent = `Category: ${productData.category}`;
+
+  const countPara = document.createElement("p");
+  countPara.textContent = `Count: ${productData.rating.count}`;
+
+  const priceRatingDiv = document.createElement("div");
+  priceRatingDiv.classList.add("price-rating");
+
+  const rateDiv = document.createElement("div");
+  rateDiv.classList.add("rate");
+
+  const rateImg = document.createElement("img");
+  rateImg.src = "photos/star.png";
+  rateImg.style.cssText = "width: 20px; height: 20px";
+
+  const ratePara = document.createElement("p");
+  ratePara.textContent = productData.rating.rate;
+
+  rateDiv.appendChild(rateImg);
+  rateDiv.appendChild(ratePara);
+
+  const priceDiv = document.createElement("div");
+  priceDiv.classList.add("price");
+
+  const addProductImg = document.createElement("img");
+  addProductImg.id = productData.id - 1;
+  addProductImg.classList.add("add-prod");
+  addProductImg.src = "photos/vector.png";
+  addProductImg.style.cssText = "width: 18px; height: 20px";
+
+  const pricePara = document.createElement("p");
+  pricePara.textContent = `${productData.price}$`;
+
+  priceDiv.appendChild(addProductImg);
+  priceDiv.appendChild(pricePara);
+
+  priceRatingDiv.appendChild(rateDiv);
+  priceRatingDiv.appendChild(priceDiv);
+
+  productDiv.appendChild(imgFrameDiv);
+  productDiv.appendChild(idPara);
+  productDiv.appendChild(titlePara);
+  productDiv.appendChild(descPara);
+  productDiv.appendChild(categoryPara);
+  productDiv.appendChild(countPara);
+  productDiv.appendChild(priceRatingDiv);
+
+  return productDiv;
 }
 
 function addToCartHandler(el, productData) {
   let countler = 1;
   const productsDiv = document.createElement("div");
   productsDiv.classList.add("product-in-cart");
-  productsDiv.innerHTML = `
-    <div class="img-frame">
-      <img class="img-product" src="${productData.image}" />
-    </div>
-    <p style="width: 140px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-      ${productData.title}
-    </p>
-    <p>${productData.price}$</p>
-    <div class="product-countler">
-      <img class="plus" id="${el.id}" src="photos/plus2.png" width=30px height=30px/>
-      <p class="countler" id="${el.id}" style="font-size: 18px; margin-top: 3px">${countler}</p>
-      <img class="minus" id="${el.id}" src="photos/minus.png" width=30px height=30px/>
-    </div>
-  </div>`;
+
+  const imgFrameDiv = document.createElement("div");
+  imgFrameDiv.classList.add("img-frame");
+
+  const imgProduct = document.createElement("img");
+  imgProduct.classList.add("img-product");
+  imgProduct.src = productData.image;
+
+  imgFrameDiv.appendChild(imgProduct);
+
+  const titlePara = document.createElement("p");
+  titlePara.style.cssText =
+    "width: 140px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;";
+  titlePara.textContent = productData.title;
+
+  const pricePara = document.createElement("p");
+  pricePara.textContent = `${productData.price}$`;
+
+  const productCounterDiv = document.createElement("div");
+  productCounterDiv.classList.add("product-countler");
+
+  const plusImg = document.createElement("img");
+  plusImg.classList.add("plus");
+  plusImg.id = el.id;
+  plusImg.src = "photos/plus2.png";
+  plusImg.width = 30;
+  plusImg.height = 30;
+
+  const countPara = document.createElement("p");
+  countPara.classList.add("countler");
+  countPara.id = el.id;
+  countPara.style.cssText = "font-size: 18px; margin-top: 3px";
+  countPara.textContent = countler;
+
+  const minusImg = document.createElement("img");
+  minusImg.classList.add("minus");
+  minusImg.id = el.id;
+  minusImg.src = "photos/minus.png";
+  minusImg.width = 30;
+  minusImg.height = 30;
+
+  productsDiv.appendChild(imgFrameDiv);
+  productsDiv.appendChild(titlePara);
+  productsDiv.appendChild(pricePara);
+
+  productCounterDiv.appendChild(plusImg);
+  productCounterDiv.appendChild(countPara);
+  productCounterDiv.appendChild(minusImg);
+
+  productsDiv.appendChild(productCounterDiv);
+
   productsCart.appendChild(productsDiv);
 
   const plus = document.querySelectorAll(".plus");
@@ -83,16 +171,14 @@ async function fetchAndDisplayProducts() {
     for (let i = 0; i < res.data.length; i++) {
       const productData = res.data[i];
 
-      const newDiv = document.createElement("div");
-      newDiv.classList.add("product");
-      newDiv.innerHTML = generateProductHTML(productData);
+      const productElement = generateProductElement(productData);
 
-      const addProdButton = newDiv.querySelector(".add-prod");
+      const addProdButton = productElement.querySelector(".add-prod");
       addProdButton.addEventListener("click", () => {
         addToCartHandler(addProdButton, productData);
       });
 
-      products.appendChild(newDiv);
+      products.appendChild(productElement);
     }
   } catch (error) {
     console.error("Ошибка при получении данных:", error);
