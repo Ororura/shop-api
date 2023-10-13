@@ -1,9 +1,12 @@
 "use strict";
 
+// Добавлять в массив продукты, которые есть в корзине;
+// Запретить добавлять продукты в корзину, которые есть в массиве
 const sideBar = document.querySelector(".side-bar");
 const products = document.querySelector(".products");
 const productsCart = document.querySelector(".products-cart");
 sideBar.style.transition = "150ms";
+const productsInCart = [];
 
 function generateProductElement(productData) {
   const productDiv = document.createElement("div");
@@ -161,6 +164,12 @@ function addToCartHandler(el, productData) {
     }
     if (count === 0) {
       productsCart.removeChild(productsDiv);
+
+      el.src = "photos/vector.png";
+      const productIndex = productsInCart.indexOf(productData.id);
+      if (productIndex !== -1) {
+        productsInCart.splice(productIndex, 1);
+      }
     }
   });
 }
@@ -168,17 +177,19 @@ function addToCartHandler(el, productData) {
 async function fetchAndDisplayProducts() {
   try {
     const res = await axios.get("https://fakestoreapi.com/products");
+
     for (let i = 0; i < res.data.length; i++) {
+      // Переделать на forEach
       const productData = res.data[i];
-
       const productElement = generateProductElement(productData);
-
       const addProdButton = productElement.querySelector(".add-prod");
+
       addProdButton.addEventListener("click", () => {
-        console.log(addProdButton.src.slice(35, -4));
-        if (addProdButton.src.slice(35, -4) === "vector") {
+        console.log(productsInCart);
+        if (!productsInCart.includes(productData.id)) {
           addToCartHandler(addProdButton, productData);
           addProdButton.setAttribute("src", "./photos/filled_vector.png");
+          productsInCart.push(productData.id);
         }
       });
 
