@@ -7,6 +7,7 @@ const products = document.querySelector(".products");
 const productsCart = document.querySelector(".products-cart");
 sideBar.style.transition = "150ms";
 const productsInCart = [];
+console.log("test");
 
 function generateProductElement(productData) {
   const productDiv = document.createElement("div");
