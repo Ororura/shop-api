@@ -51,7 +51,7 @@ function generateProductElement(productData) {
 
   const rateImg = document.createElement("img");
   rateImg.src = "photos/star.png";
-  rateImg.style.cssText = "width: 20px; height: 20px";
+  rateImg.style.cssText = "width: 20; height: 20";
 
   const ratePara = document.createElement("p");
   ratePara.textContent = productData.rating.rate;
@@ -66,7 +66,7 @@ function generateProductElement(productData) {
   addProductImg.id = productData.id - 1;
   addProductImg.classList.add("add-prod");
   addProductImg.src = "./photos/vector.png";
-  addProductImg.style.cssText = "width: 18px; height: 20px";
+  addProductImg.style.cssText = "width: 18; height: 20";
 
   const pricePara = document.createElement("p");
   pricePara.textContent = `${productData.price}$`;
