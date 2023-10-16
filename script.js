@@ -178,9 +178,8 @@ async function fetchAndDisplayProducts() {
   try {
     const res = await axios.get("https://fakestoreapi.com/products");
 
-    for (let i = 0; i < res.data.length; i++) {
-      // Переделать на forEach
-      const productData = res.data[i];
+    res.data.forEach((el) => {
+      const productData = el;
       const productElement = generateProductElement(productData);
       const addProdButton = productElement.querySelector(".add-prod");
 
@@ -194,7 +193,7 @@ async function fetchAndDisplayProducts() {
       });
 
       products.appendChild(productElement);
-    }
+    });
   } catch (error) {
     console.error("Ошибка при получении данных:", error);
   }
