@@ -7,7 +7,6 @@ const products = document.querySelector(".products");
 const productsCart = document.querySelector(".products-cart");
 sideBar.style.transition = "150ms";
 const productsInCart = [];
-console.log("test");
 
 function generateProductElement(productData) {
   const productDiv = document.createElement("div");
@@ -51,7 +50,7 @@ function generateProductElement(productData) {
 
   const rateImg = document.createElement("img");
   rateImg.src = "photos/star.png";
-  rateImg.style.cssText = "width: 20; height: 20";
+  rateImg.style.cssText = "width: 20px; height: 20px";
 
   const ratePara = document.createElement("p");
   ratePara.textContent = productData.rating.rate;
@@ -66,7 +65,7 @@ function generateProductElement(productData) {
   addProductImg.id = productData.id - 1;
   addProductImg.classList.add("add-prod");
   addProductImg.src = "./photos/vector.png";
-  addProductImg.style.cssText = "width: 18; height: 20";
+  addProductImg.style.cssText = "width: 18px; height: 20px";
 
   const pricePara = document.createElement("p");
   pricePara.textContent = `${productData.price}$`;
