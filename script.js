@@ -184,7 +184,6 @@ async function fetchAndDisplayProducts() {
       const addProdButton = productElement.querySelector(".add-prod");
 
       addProdButton.addEventListener("click", () => {
-        console.log(productsInCart);
         if (!productsInCart.includes(productData.id)) {
           addToCartHandler(addProdButton, productData);
           addProdButton.setAttribute("src", "./photos/filled_vector.png");
