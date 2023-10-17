@@ -41,7 +41,6 @@ body {
 }
 
 .side-bar {
-  padding: 15px;
   transform: translateX(-120px);
   position: fixed;
   top: 0;
@@ -62,7 +61,7 @@ body {
 }
 
 .side-bar:hover .icons-sidebar {
-  transform: translateX(-30px);
+  transform: translateX(-50px);
   transition: 500ms;
 }
 
@@ -77,8 +76,8 @@ body {
 }
 
 #logo {
-  /*margin-top: 20px;
-  margin-right: 10px;*/
+  margin-top: 20px;
+  margin-right: 10px;
 }
 
 .side-bar:hover #logo {
@@ -189,8 +188,8 @@ body {
   font-size: 13px;
   background-color: white;
   border-radius: 15px;
+  margin: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  /*margin: 20px;*/
 }
 
 .product-in-cart p {
