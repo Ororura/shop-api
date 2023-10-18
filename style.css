@@ -8,7 +8,7 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  margin-top: 10px;
+  margin-top: 30px;
   cursor: pointer;
   user-select: none;
 }
@@ -60,7 +60,7 @@ body {
 }
 
 .side-bar:hover .icons-sidebar {
-  transform: translateX(-50px);
+  transform: translateX(-40px);
   transition: 500ms;
 }
 
@@ -180,6 +180,9 @@ body {
   overflow: hidden;
   overflow: scroll;
   height: 70vh;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
 }
 
 .product-in-cart {
@@ -189,7 +192,7 @@ body {
   font-size: 13px;
   background-color: white;
   border-radius: 15px;
-  margin: 20px;
+  height: 250px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
