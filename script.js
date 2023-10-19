@@ -88,7 +88,7 @@ function generateProductElement(productData) {
 }
 
 function addToCartHandler(el, productData) {
-  let countler = 1;
+  let counter = 1;
   const productsDiv = document.createElement("div");
   productsDiv.classList.add("product-in-cart");
 
@@ -110,7 +110,7 @@ function addToCartHandler(el, productData) {
   pricePara.textContent = `${productData.price}$`;
 
   const productCounterDiv = document.createElement("div");
-  productCounterDiv.classList.add("product-countler");
+  productCounterDiv.classList.add("product-counter");
 
   const plusImg = document.createElement("img");
   plusImg.classList.add("plus");
@@ -120,10 +120,10 @@ function addToCartHandler(el, productData) {
   plusImg.height = 30;
 
   const countPara = document.createElement("p");
-  countPara.classList.add("countler");
+  countPara.classList.add("counter");
   countPara.id = el.id;
   countPara.style.cssText = "font-size: 18px; margin-top: 3px";
-  countPara.textContent = countler;
+  countPara.textContent = counter;
 
   const minusImg = document.createElement("img");
   minusImg.classList.add("minus");
@@ -146,7 +146,7 @@ function addToCartHandler(el, productData) {
 
   const plus = document.querySelectorAll(".plus");
   const minus = document.querySelectorAll(".minus");
-  const countProd = document.querySelectorAll(".countler");
+  const countProd = document.querySelectorAll(".counter");
 
   plus[plus.length - 1].addEventListener("click", () => {
     let count = parseInt(countProd[plus.length - 1].textContent);
@@ -184,7 +184,8 @@ async function fetchAndDisplayProducts() {
       const addProdButton = productElement.querySelector(".add-prod");
 
       addProdButton.addEventListener("click", () => {
-        if (!productsInCart.includes(productData.id)) {
+        const prodfind = productsInCart.find((el) => el === productData.id);
+        if (!prodfind) {
           addToCartHandler(addProdButton, productData);
           addProdButton.setAttribute("src", "./photos/filled_vector.png");
           productsInCart.push(productData.id);
