@@ -211,7 +211,7 @@ body {
   object-fit: cover;
 }
 
-.product-countler {
+.product-counter {
   display: flex;
   justify-content: space-between;
 }
