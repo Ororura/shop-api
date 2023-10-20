@@ -1,7 +1,4 @@
 "use strict";
-
-// Добавлять в массив продукты, которые есть в корзине;
-// Запретить добавлять продукты в корзину, которые есть в массиве
 const sideBar = document.querySelector(".side-bar");
 const products = document.querySelector(".products");
 const productsCart = document.querySelector(".products-cart");
